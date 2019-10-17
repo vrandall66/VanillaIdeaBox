@@ -37,7 +37,9 @@ function deleteIdeaDOM(event) {
 }
 
 function deleteIdea(eventID) {
-  
+  let foundIndex = ideas.findIndex(idea => idea.id === eventID)
+  ideas.splice(foundIndex, 1)
+  renderIdeas();
 }
 
 function renderIdeas() {
