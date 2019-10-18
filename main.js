@@ -29,7 +29,6 @@ function makeNewIdea() {
     description: inputDescription.value,
     id: Date.now()
   });
-  console.log(idea);
   ideas.push(idea);
   idea.setLocalStorage(idea);
   renderIdea(idea);
