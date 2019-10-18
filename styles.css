@@ -8,36 +8,90 @@ body {
   background-color: honeydew;
 }
 
+header {
+  margin: 0;
+  text-align: center;
+}
+
+h1 {
+  color: grey;
+  margin: 0;
+  font-family: "Montserrat", sans-serif;
+  font-size: 300%;
+  text-shadow: 1px 1px 1px black;
+}
+
 .form {
   align-items: center;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+  margin: 0;
 }
 
 .form__input {
-  width: 50%;
+  border: none;
+  font-family: "Montserrat", sans-serif;
+  font-size: 105%;
+  text-align: center;
+  width: 30%;
+}
+
+.form__input--title {
+  box-shadow: 3px 3px 3px 0px grey;
+  margin-top: 2%;
+}
+
+.form__input--description {
+  box-shadow: 3px 3px 3px 0px grey;
+  font-family: "EB Garamond", serif;
 }
 
 .form__btn--submit {
-  width: 50%;
+  background-color: gray;
+  border: none;
+  border-radius: 8px;
+  box-shadow: 3px 3px 3px 0px black;
+  color: white;
+  font-family: "Montserrat", sans-serif;
+  font-size: 105%;
+  height: 1.25em;
+  width: 10%;
 }
 
 .container__section {
   display: flex;
   flex-wrap: wrap;
+  margin: 0;
 }
 
 .idea__div {
+  align-items: center;
   align-content: space-between;
   background-color: white;
+  box-shadow: 3px 3px 10px 0px grey;
   display: flex;
   flex-direction: column;
+  font-family: "Montserrat", sans-serif;
   justify-content: center;
+  text-align: center;
   margin: 1%;
   padding: 1%;
-  width: 29%;
+  width: 31%;
 }
 
-h3 {
+.idea__div--p {
+  font-family: "EB Garamond", serif;
+}
+
+.idea__button--delete {
+  background-color: grey;
+  border: none;
+  border-radius: 8px;
+  box-shadow: 3px 3px 3px 0px black;
+  color: white;
+  font-family: "Montserrat", sans-serif;
+  font-size: 105%;
+  height: 1.25em;
+  width: 35%;
 }

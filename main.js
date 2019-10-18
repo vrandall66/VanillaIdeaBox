@@ -61,8 +61,8 @@ function renderIdea(idea) {
   return ideaContainer.insertAdjacentHTML(
     "afterbegin",
     `<div class="idea__div" id="${idea.id}">
-        <h3>${idea.title}</h3>
-        <p>${idea.description}</p>
+        <h3 class="idea__div--h3">${idea.title}</h3>
+        <p class="idea__div--p">${idea.description}</p>
         <button type="button" class="idea__button--delete" id=${idea.id}>Delete</button>
       </div>`
   );
