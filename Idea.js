@@ -8,4 +8,9 @@ class Idea {
   setLocalStorage() {
     localStorage.setItem("ideas", JSON.stringify(ideas));
   }
+
+  deleteFromStorage(ideaIndex) {
+    ideas.splice(ideaIndex, 1);
+    this.setLocalStorage();
+  }
 }

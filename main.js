@@ -31,30 +31,28 @@ function makeNewIdea() {
     description: inputDescription.value
   });
   ideas.push(idea);
-  idea.setLocalStorage(idea);
+  idea.setLocalStorage(ideas);
   renderIdea(idea);
 }
 
 function deleteIdeaDOM(event) {
-  console.log(event);
   event.target.parentNode.remove();
   deleteIdea(event.target.id);
 }
 
 function deleteIdea(eventID) {
-  let filteredIdeas = ideas.filter(idea => idea.id !== eventID);
-
-  return filteredIdeas;
+  let foundIdeaIndex = ideas.findIndex(idea => idea.id !== eventID);
+  return ideas[foundIdeaIndex].deleteFromStorage(foundIdeaIndex);
 }
 
 function persistedIdeas() {
-  return ideas = ideas.map(({id, title, description}) => {
-    return new Idea({id, title, description})
-  });
+  return (ideas = ideas.map(({ id, title, description }) => {
+    return new Idea({ id, title, description });
+  }));
 }
 
 function displayIdeas() {
-  return ideas.forEach(idea => renderIdea(idea))
+  return ideas.forEach(idea => renderIdea(idea));
 }
 
 function renderIdea(idea) {
