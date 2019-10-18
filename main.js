@@ -25,9 +25,9 @@ function checkInputs() {
 
 function makeNewIdea() {
   let idea = new Idea({
+    id: Date.now(),
     title: inputTitle.value,
-    description: inputDescription.value,
-    id: Date.now()
+    description: inputDescription.value
   });
   ideas.push(idea);
   idea.setLocalStorage(idea);
@@ -47,16 +47,16 @@ function deleteIdea(eventID) {
 }
 
 function persistedIdeas() {
-  ideas.map(
-    idea =>
-      new Idea({
-        id: idea.id,
-        title: idea.title,
-        description: idea.description
-      })
-  );
-  ideas.forEach(idea => renderIdea(idea));
+  return ideas = ideas.map(({id, title, description}) => {
+    return new Idea({id, title, description})
+  });
 }
+
+// function reinstantiateIdeas(storedIdeas) {
+//   return storedIdeas.forEach(idea => {
+//     return new Idea({ id, title, description })
+//   })
+// }
 
 function renderIdea(idea) {
   return ideaContainer.insertAdjacentHTML(
