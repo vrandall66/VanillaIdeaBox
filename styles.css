@@ -1,0 +1,43 @@
+* {
+  /* border: 1px solid red; */
+  box-sizing: border-box;
+  margin: 1%;
+}
+
+body {
+  background-color: honeydew;
+}
+
+.form {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.form__input {
+  width: 50%;
+}
+
+.form__btn--submit {
+  width: 50%;
+}
+
+.container__section {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.idea__div {
+  align-content: space-between;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 1%;
+  padding: 1%;
+  width: 29%;
+}
+
+h3 {
+}

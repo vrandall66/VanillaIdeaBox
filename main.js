@@ -1,5 +1,7 @@
 let ideas = JSON.parse(localStorage.getItem("ideas")) || [];
 
+let inputTitle = document.querySelector(".form__input--title");
+let inputDescription = document.querySelector(".form__input--description");
 let submitBtn = document.querySelector(".form__btn--submit");
 let ideaContainer = document.querySelector(".container__section");
 let deleteBtn = document.querySelector(".idea__button--delete");
@@ -17,8 +19,6 @@ function checkEvent() {
 }
 
 function makeNewIdea() {
-  let inputTitle = document.querySelector(".form__input--title");
-  let inputDescription = document.querySelector(".form__input--description");
   if (inputTitle.value && inputDescription) {
     let idea = new Idea({
       id: Date.now(),
@@ -33,8 +33,6 @@ function makeNewIdea() {
 }
 
 function clearInputs() {
-  let inputTitle = document.querySelector(".form__input--title");
-  let inputDescription = document.querySelector(".form__input--description");
   inputTitle.value = "";
   inputDescription.value = "";
 }
