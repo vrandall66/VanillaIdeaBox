@@ -10,6 +10,7 @@ submitBtn.addEventListener("click", checkInputs);
 ideaContainer.addEventListener("click", checkEvent);
 
 persistedIdeas();
+displayIdeas();
 
 function checkEvent() {
   event.target.classList.contains("idea__button--delete")
@@ -52,11 +53,9 @@ function persistedIdeas() {
   });
 }
 
-// function reinstantiateIdeas(storedIdeas) {
-//   return storedIdeas.forEach(idea => {
-//     return new Idea({ id, title, description })
-//   })
-// }
+function displayIdeas() {
+  return ideas.forEach(idea => renderIdea(idea))
+}
 
 function renderIdea(idea) {
   return ideaContainer.insertAdjacentHTML(
