@@ -9,6 +9,8 @@ let deleteBtn = document.querySelector(".idea__button--delete");
 submitBtn.addEventListener("click", checkInputs);
 ideaContainer.addEventListener("click", checkEvent);
 
+persistedIdeas();
+
 function checkEvent() {
   event.target.classList.contains("idea__button--delete")
     ? deleteIdeaDOM(event)
@@ -40,26 +42,21 @@ function deleteIdeaDOM(event) {
 }
 
 function deleteIdea(eventID) {
-  let foundIndex = ideas.findIndex(idea => idea.id === eventID);
-  ideas.splice(foundIndex, 1);
+  let filteredIdeas = ideas.filter(idea => idea.id !== eventID);
+
+  return filteredIdeas;
 }
 
 function persistedIdeas() {
-  ideas.map(index => {
-    let id = ideas[index].id;
-    let title = ideas[index].title;
-    let description = ideas[index].description;
-    reassignClass(id, title, description);
-  });
-}
-
-function reassignClass(id, title, description) {
-  let idea = new Idea({
-    id: id,
-    title: title,
-    description: description
-  });
-  ideas.splice(i, 1, idea);
+  ideas.map(
+    idea =>
+      new Idea({
+        id: idea.id,
+        title: idea.title,
+        description: idea.description
+      })
+  );
+  ideas.forEach(idea => renderIdea(idea));
 }
 
 function renderIdea(idea) {
