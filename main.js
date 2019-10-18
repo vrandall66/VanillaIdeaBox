@@ -1,12 +1,10 @@
 let ideas = JSON.parse(localStorage.getItem("ideas")) || [];
 
-let inputTitle = document.querySelector(".form__input--title");
-let inputDescription = document.querySelector(".form__input--description");
 let submitBtn = document.querySelector(".form__btn--submit");
 let ideaContainer = document.querySelector(".container__section");
 let deleteBtn = document.querySelector(".idea__button--delete");
 
-submitBtn.addEventListener("click", checkInputs);
+submitBtn.addEventListener("click", makeNewIdea);
 ideaContainer.addEventListener("click", checkEvent);
 
 persistedIdeas();
@@ -18,31 +16,37 @@ function checkEvent() {
     : null;
 }
 
-function checkInputs() {
+function makeNewIdea() {
+  let inputTitle = document.querySelector(".form__input--title");
+  let inputDescription = document.querySelector(".form__input--description");
   if (inputTitle.value && inputDescription) {
-    makeNewIdea();
+    let idea = new Idea({
+      id: Date.now(),
+      title: inputTitle.value,
+      description: inputDescription.value
+    });
+    ideas.push(idea);
+    idea.setLocalStorage(ideas);
+    renderIdea(idea);
+    clearInputs();
   }
 }
 
-function makeNewIdea() {
-  let idea = new Idea({
-    id: Date.now(),
-    title: inputTitle.value,
-    description: inputDescription.value
-  });
-  ideas.push(idea);
-  idea.setLocalStorage(ideas);
-  renderIdea(idea);
+function clearInputs() {
+  let inputTitle = document.querySelector(".form__input--title");
+  let inputDescription = document.querySelector(".form__input--description");
+  inputTitle.value = "";
+  inputDescription.value = "";
 }
 
 function deleteIdeaDOM(event) {
   event.target.parentNode.remove();
-  deleteIdea(event.target.id);
+  let found = findIdea(event.target.id);
+  ideas[found].deleteFromStorage(found, ideas);
 }
 
-function deleteIdea(eventID) {
-  let foundIdeaIndex = ideas.findIndex(idea => idea.id !== eventID);
-  return ideas[foundIdeaIndex].deleteFromStorage(foundIdeaIndex);
+function findIdea(eventID) {
+  return ideas.findIndex(idea => idea.id == eventID);
 }
 
 function persistedIdeas() {
